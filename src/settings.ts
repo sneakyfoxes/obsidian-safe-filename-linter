@@ -17,6 +17,7 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 		this.intro();
 		this.obsidianChars();
 		this.androidChars();
+		this.otherChars();
 	}
 
 	intro(): void {
@@ -165,6 +166,30 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 				dropdown.setValue(this.plugin.settings.angleBrackets);
 				dropdown.onChange(async (value) => {
 					this.plugin.settings.angleBrackets = value;
+					await this.plugin.saveSettings();
+				});
+			});
+	}
+
+	otherChars(): void {
+		const { containerEl } = this;
+
+		this.containerEl.createEl('h2', {
+			text: 'Other troublesome characters',
+		});
+		this.containerEl.createEl('p', {
+			text: 'Users have reported syncing issues with these characters on other systems.',
+		});
+
+		// Setting for equal: =
+		new Setting(containerEl)
+			.setName('Replacement for equal')
+			.setDesc('Specify the replacement for =')
+			.addDropdown((dropdown) => {
+				this.addReplacementOptions(dropdown);
+				dropdown.setValue(this.plugin.settings.equal);
+				dropdown.onChange(async (value) => {
+					this.plugin.settings.equal = value;
 					await this.plugin.saveSettings();
 				});
 			});
