@@ -72,6 +72,17 @@ See [CONTRIBUTING](./CONTRIBUTING.md) for details on how to submit code.
 
 No automated tests are currently setup.
 
+For manual testing, there are examples in `examples` you can copy into your repo. They are stored in the repo with safe filenames, so you need to run a quick command to gunkify them.
+
+```bash
+for file in examples/*/*/*
+do
+ endChar=`cat $file`
+ newFilename=`echo $file | sed "s/.md/${endChar}.md/"`
+ mv $file $newFilename
+done
+```
+
 ### Code Linting
 
 - To use eslint to analyze this project use this command:
