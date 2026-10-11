@@ -72,16 +72,22 @@ See [CONTRIBUTING](./CONTRIBUTING.md) for details on how to submit code.
 
 No automated tests are currently setup.
 
-For manual testing, there are examples in `examples` you can copy into your repo. They are stored in the repo with safe filenames, so you need to run a quick command to gunkify them.
+For manual testing, there are examples in `examples` you can copy into your repo. They are stored in the repo with safe filenames, so you need to run a quick command to gunkify them and put them in the parent test repo.
+
+Make sure you already have obsidian open to the test vault the you are developing in. On the terminal, navigate to the repo and further to `./.obsidian/plugins/obsidian-filename-linter` and run:
 
 ```bash
-for file in examples/*/*/*
+for file in test/examples/*/*/*
 do
- endChar=`cat $file`
- newFilename=`echo $file | sed "s/.md/${endChar}.md/"`
- mv $file $newFilename
+  badChar=`cat $file`
+  now=`date +"%Y%m%d_%H%M%S"`
+  newPath=`echo $file | sed "s/test\/examples/..\/..\/\..\/$now/"`
+  newFilename=`echo $newPath | sed "s/.md/$badChar.md/"`
+  install -D -m 644 $file $newFilename
 done
 ```
+
+We're using install to make sure it creates the same directory structure, but taking away the executable default. Slightly hacky.
 
 ### Code Linting
 
