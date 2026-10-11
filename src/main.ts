@@ -6,6 +6,7 @@ interface SafeFilenameLinterSettings {
 	numberSign: string;
 	caret: string;
 	equal: string;
+	percentage: string;
 	pipe: string;
 	colon: string;
 	asterisk: string;
@@ -19,6 +20,7 @@ const DEFAULT_SETTINGS: SafeFilenameLinterSettings = {
 	numberSign: 'off',
 	caret: 'off',
 	equal: 'off',
+	percentage: 'off',
 	pipe: 'off',
 	colon: 'off',
 	asterisk: 'off',
@@ -136,6 +138,14 @@ export default class SafeFilenameLinter extends Plugin {
 				this.settings.equal,
 			);
 			newFilename = newFilename.replaceAll(/=/gi, replacement);
+		}
+
+		// Handle percentage
+		if (this.settings.percentage !== 'off') {
+			const replacement = this.getReplacementValueFromSetting(
+				this.settings.percentage,
+			);
+			newFilename = newFilename.replaceAll(/%/gi, replacement);
 		}
 
 		// Handle pipe

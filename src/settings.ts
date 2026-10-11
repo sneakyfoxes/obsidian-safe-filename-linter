@@ -193,5 +193,18 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 					await this.plugin.saveSettings();
 				});
 			});
+
+		// Setting for percentage: %
+		new Setting(containerEl)
+			.setName('Replacement for percentage')
+			.setDesc('Specify the replacement for %')
+			.addDropdown((dropdown) => {
+				this.addReplacementOptions(dropdown);
+				dropdown.setValue(this.plugin.settings.percentage);
+				dropdown.onChange(async (value) => {
+					this.plugin.settings.percentage = value;
+					await this.plugin.saveSettings();
+				});
+			});
 	}
 }
