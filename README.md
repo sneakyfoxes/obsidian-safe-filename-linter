@@ -21,7 +21,9 @@ These commands rename files by replacing invalid or troublesome characters with 
 
 ### Automatic invocation
 
-Not yet available.
+Enable `Lint automatically` in the plugin settings to lint filenames whenever a file is created or renamed, including files added by sync. This covers renaming a note via its title, so the filename stays safe while Obsidian updates internal links as usual.
+
+Existing files are not linted when the setting is enabled. Run `Lint all filenames in the vault` once to clean them up.
 
 ### Credits
 
