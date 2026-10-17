@@ -16,6 +16,10 @@ interface SafeFilenameLinterSettings {
 	angleBrackets: string;
 }
 
+// Notice duration is in milliseconds.
+// See https://docs.obsidian.md/Reference/TypeScript+API/Notice/(constructor)
+const NOTICE_DURATION = 30000;
+
 const DEFAULT_SETTINGS: SafeFilenameLinterSettings = {
 	autoLint: false,
 	squareBrackets: 'off',
@@ -258,25 +262,28 @@ export default class SafeFilenameLinter extends Plugin {
 				await this.app.fileManager.renameFile(file, newFilepath);
 
 				// If the file was successfully rename, alert the user
-				new Notice(`"${oldFilename}" renamed to "${newFilename}"`, 30);
+				new Notice(
+					`"${oldFilename}" renamed to "${newFilename}"`,
+					NOTICE_DURATION,
+				);
 			} catch (error) {
 				// If there was an error, alert the user.
 				new Notice(
 					`Error: ${error.name}: Unable to rename "${oldFilename}" to "${newFilename}". There probably already exists a file with this name`,
-					30,
+					NOTICE_DURATION,
 				);
 			}
 		}
 	}
 
 	async lintAllFilenames() {
-		new Notice('Linting all filenames...', 30);
+		new Notice('Linting all filenames...', NOTICE_DURATION);
 		await Promise.all(
 			// Get all files in the current vault
 			this.app.vault.getFiles().map(async (file) => {
 				await this.lintFilename(file);
 			}),
 		);
-		new Notice('Linted all filenames', 30);
+		new Notice('Linted all filenames', NOTICE_DURATION);
 	}
 }
