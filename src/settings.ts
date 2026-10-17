@@ -15,6 +15,7 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		this.intro();
+		this.autoLint();
 		this.obsidianChars();
 		this.androidChars();
 	}
@@ -25,6 +26,24 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 		containerEl.createEl('p', {
 			text: 'Note that Obsidian will automatically truncate multiple spaces in filenames and [[links]] into one space.',
 		});
+	}
+
+	autoLint(): void {
+		const { containerEl } = this;
+
+		// Setting for automatic linting
+		new Setting(containerEl)
+			.setName('Lint automatically')
+			.setDesc(
+				'Lint filenames automatically when files are created or renamed, including files added by sync.',
+			)
+			.addToggle((toggle) => {
+				toggle.setValue(this.plugin.settings.autoLint);
+				toggle.onChange(async (value) => {
+					this.plugin.settings.autoLint = value;
+					await this.plugin.saveSettings();
+				});
+			});
 	}
 
 	addReplacementOptions(dropdown: DropdownComponent): void {

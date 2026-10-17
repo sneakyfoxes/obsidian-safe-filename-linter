@@ -1,7 +1,8 @@
-import { Notice, Plugin, TFile, normalizePath } from 'obsidian';
+import { Notice, Plugin, TAbstractFile, TFile, normalizePath } from 'obsidian';
 import SafeFilenameLinterSettingTab from './settings';
 
 interface SafeFilenameLinterSettings {
+	autoLint: boolean;
 	squareBrackets: string;
 	numberSign: string;
 	caret: string;
@@ -14,6 +15,7 @@ interface SafeFilenameLinterSettings {
 }
 
 const DEFAULT_SETTINGS: SafeFilenameLinterSettings = {
+	autoLint: false,
 	squareBrackets: 'off',
 	numberSign: 'off',
 	caret: 'off',
@@ -65,6 +67,22 @@ export default class SafeFilenameLinter extends Plugin {
 
 		// This adds a settings tab so the user can configure various aspects of the plugin
 		this.addSettingTab(new SafeFilenameLinterSettingTab(this.app, this));
+
+		// Automatically lint files when they are created or renamed.
+		// Registered inside onLayoutReady so we don't receive a create event for every file on vault load.
+		// See https://docs.obsidian.md/Reference/TypeScript+API/Vault/on('create')
+		this.app.workspace.onLayoutReady(() => {
+			this.registerEvent(
+				this.app.vault.on('create', (file) =>
+					this.autoLintFilename(file),
+				),
+			);
+			this.registerEvent(
+				this.app.vault.on('rename', (file) =>
+					this.autoLintFilename(file),
+				),
+			);
+		});
 	}
 
 	onunload() {}
@@ -98,6 +116,16 @@ export default class SafeFilenameLinter extends Plugin {
 				break;
 		}
 		return replacement;
+	}
+
+	autoLintFilename(file: TAbstractFile) {
+		if (!this.settings.autoLint || !(file instanceof TFile)) {
+			return;
+		}
+
+		// Wait until Obsidian has finished handling the create or rename event before renaming the file again.
+		// Renaming to a clean name triggers another rename event, which is a no-op.
+		window.setTimeout(() => this.lintFilename(file), 0);
 	}
 
 	async lintFilename(file: TFile) {
