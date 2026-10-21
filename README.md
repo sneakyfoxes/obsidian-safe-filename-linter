@@ -74,11 +74,11 @@ No automated tests are currently setup.
 
 For manual testing, we have included test files in [`test/examples`](/test/examples). 
 
-The test files are stored in this git repo with safe filenames, so you need to run a quick command to gunk-ify them and put them in the obsidian content directory:
+The test files are stored in this git repo with safe filenames, so you need to run a quick command to gunk-ify them and put them in the Obsidian content directory:
 
 0. Make sure you have followed the steps in the `Developing the plugin > Initial setup` section above
 1. Navigate to your sandbox Obsidian vault
-2. Navigate to `./.obsidian/plugins/obsidian-filename-linter`
+2. Navigate to `./.obsidian/plugins/obsidian-safe-filename-linter`
 3. Run:
 ```bash
 for file in test/examples/*/*/*
