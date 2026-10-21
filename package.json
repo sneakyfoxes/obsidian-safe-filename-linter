@@ -1,6 +1,6 @@
 {
 	"name": "safe-filename-linter",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"description": "Obsidian app plugin to lint filenames for invalid or troublesome characters",
 	"main": "main.js",
 	"scripts": {
