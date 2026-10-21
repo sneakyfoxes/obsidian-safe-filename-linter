@@ -72,10 +72,14 @@ See [CONTRIBUTING](./CONTRIBUTING.md) for details on how to submit code.
 
 No automated tests are currently setup.
 
-For manual testing, there are examples in `examples` you can copy into your repo. They are stored in the repo with safe filenames, so you need to run a quick command to gunkify them and put them in the parent test repo.
+For manual testing, we have included test files in [`test/examples`](/test/examples). 
 
-Make sure you already have obsidian open to the test vault the you are developing in. On the terminal, navigate to the repo and further to `./.obsidian/plugins/obsidian-filename-linter` and run:
+The test files are stored in this git repo with safe filenames, so you need to run a quick command to gunk-ify them and put them in the obsidian content directory:
 
+0. Make sure you have followed the steps in the `Developing the plugin > Initial setup` section above
+1. Navigate to your sandbox Obsidian vault
+2. Navigate to `./.obsidian/plugins/obsidian-filename-linter`
+3. Run:
 ```bash
 for file in test/examples/*/*/*
 do
@@ -86,8 +90,10 @@ do
   install -D -m 644 $file $newFilename
 done
 ```
+4. Open your sandbox Obsidian vault
+5. Adjust the Safe Filename Linter settings as desired and then invoke the Safe Filename Linter commands
 
-We're using install to make sure it creates the same directory structure, but taking away the executable default. Slightly hacky.
+Note: The bash code above uses `install` to make sure it creates the same directory structure, but taking away the executable default. Slightly hacky.
 
 ### Code Linting
 
