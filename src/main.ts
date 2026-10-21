@@ -269,7 +269,7 @@ export default class SafeFilenameLinter extends Plugin {
 			} catch (error) {
 				// If there was an error, alert the user.
 				new Notice(
-					`Error: ${error.name}: Unable to rename "${oldFilename}" to "${newFilename}". There probably already exists a file with this name`,
+					`${error.name}: Unable to rename "${oldFilename}" to "${newFilename}". There probably already exists a file with this name`,
 					NOTICE_DURATION,
 				);
 			}
