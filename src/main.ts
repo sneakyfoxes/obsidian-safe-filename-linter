@@ -126,7 +126,7 @@ export default class SafeFilenameLinter extends Plugin {
 		}
 
 		// Wait until Obsidian has finished handling the create or rename event before renaming the file again.
-		// Renaming to a clean name triggers another rename event, which is a no-op.
+		// Renaming to a clean name triggers another rename event, which runs through this call again as a no-op.
 		window.setTimeout(() => this.lintFilename(file), 0);
 	}
 

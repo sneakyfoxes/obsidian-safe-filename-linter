@@ -35,7 +35,7 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName('Lint automatically')
 			.setDesc(
-				'Lint filenames automatically when files are created or renamed, including files added by sync.',
+				'on creation and renaming, including files created outside Obsidian.',
 			)
 			.addToggle((toggle) => {
 				toggle.setValue(this.plugin.settings.autoLint);
