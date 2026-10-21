@@ -68,21 +68,23 @@ export default class SafeFilenameLinter extends Plugin {
 		// This adds a settings tab so the user can configure various aspects of the plugin
 		this.addSettingTab(new SafeFilenameLinterSettingTab(this.app, this));
 
-		// Automatically lint files when they are created or renamed.
-		// Registered inside onLayoutReady so we don't receive a create event for every file on vault load.
-		// See https://docs.obsidian.md/Reference/TypeScript+API/Vault/on('create')
-		this.app.workspace.onLayoutReady(() => {
-			this.registerEvent(
-				this.app.vault.on('create', (file) =>
-					this.autoLintFilename(file),
-				),
-			);
-			this.registerEvent(
-				this.app.vault.on('rename', (file) =>
-					this.autoLintFilename(file),
-				),
-			);
-		});
+		// Register the autolinting events, if enabled
+		if (this.settings.autoLint) {
+			// Registered inside onLayoutReady as best practice to avoid Obsidian startup issues
+			// See https://docs.obsidian.md/plugins/guides/load-time#Listening+to+%60vault.on('create')%60
+			this.app.workspace.onLayoutReady(() => {
+				this.registerEvent(
+					this.app.vault.on('create', (file) =>
+						this.autoLintFilename(file),
+					),
+				);
+				this.registerEvent(
+					this.app.vault.on('rename', (file) =>
+						this.autoLintFilename(file),
+					),
+				);
+			});
+		}
 	}
 
 	onunload() {}
