@@ -178,7 +178,7 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 			text: 'Other troublesome characters',
 		});
 		this.containerEl.createEl('p', {
-			text: 'Users have reported syncing issues with these characters on other systems.',
+			text: 'If you sync your vault with external systems, such as OneDrive, you might run into issues with these characters.',
 		});
 
 		// Setting for equal: =
