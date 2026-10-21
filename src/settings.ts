@@ -193,9 +193,7 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 	otherChars(): void {
 		const { containerEl } = this;
 
-		this.containerEl.createEl('h2', {
-			text: 'Other troublesome characters',
-		});
+		new Setting(containerEl).setName('Other troublesome characters').setHeading();
 		this.containerEl.createEl('p', {
 			text: 'If you sync your vault with external systems, such as OneDrive, you might run into issues with these characters.',
 		});
