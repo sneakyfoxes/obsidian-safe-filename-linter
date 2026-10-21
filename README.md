@@ -27,7 +27,7 @@ To the best of our understanding, `Lint automatically` should also handle files 
 
 ### Credits
 
-We are grateful to the developers of Obsidian for the [Obisidan Sample Plugin](obsidianmd/obsidian-sample-plugin) for the basis of this plugin, and to [Obsidian Filename Emoji Remover Plugin](https://github.com/YTolun/obsidian-filename-emoji-remover), whose code we read and experimented with before diving into writing our own plugin.
+We are grateful to the developers of Obsidian for the [Obsidian Sample Plugin](https://github.com/obsidianmd/obsidian-sample-plugin) for the basis of this plugin, and to [Obsidian Filename Emoji Remover Plugin](https://github.com/YTolun/obsidian-filename-emoji-remover), whose code we read and experimented with before diving into writing our own plugin.
 
 Thank you to @robertgarrigos and @cwoelk for automatic linting and bugfixes.
 
