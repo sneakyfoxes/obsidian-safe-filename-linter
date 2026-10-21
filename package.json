@@ -9,7 +9,7 @@
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
 	"keywords": [],
-	"author": "sneaky-foxes",
+	"author": "sneakyfoxes",
 	"license": "gpl-3.0",
 	"devDependencies": {
 		"@eslint/eslintrc": "^3.3.7",

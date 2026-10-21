@@ -8,7 +8,7 @@ When submitting a PR, run eslint and prettier on the changed files.
 
 Please thoroughly test on at least one platform and include testing instructions in the PR.
 
-Add a review request from `@sneaky-foxes/engineers`.
+Add a review request from `@sneakyfoxes/engineers`.
 
 ## Maintainer Response
 

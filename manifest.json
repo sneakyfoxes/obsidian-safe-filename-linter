@@ -4,7 +4,7 @@
 	"version": "1.4.0",
 	"minAppVersion": "0.15.0",
 	"description": "Lints filenames for invalid or troublesome characters",
-	"author": "sneaky-foxes",
-	"authorUrl": "https://github.com/sneaky-foxes",
+	"author": "sneakyfoxes",
+	"authorUrl": "https://github.com/sneakyfoxes",
 	"isDesktopOnly": false
 }

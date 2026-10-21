@@ -42,7 +42,7 @@ Thank you to @robertgarrigos and @cwoelk for automatic linting and bugfixes.
 ### Manually Install
 
 1. On the command line, navigate to your vault's `.obsidian/plugins` directory and run:
-   `git clone https://github.com/sneaky-foxes/obsidian-safe-filename-linter`
+   `git clone https://github.com/sneakyfoxes/obsidian-safe-filename-linter`
    - Alternatively, download the latest release and place the `main.js` and `manifest.json` in the directory in `obsidian-safe-filename-linter`
 2. In your Obsidian vault, enable this project from the Community Plugins setting section
 3. Set up your preferred character replacements in the Safe Filename Linter Community Plugins section
