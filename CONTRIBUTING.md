@@ -8,6 +8,10 @@ When submitting a PR, run eslint and prettier on the changed files.
 
 Please thoroughly test on at least one platform and include testing instructions in the PR.
 
+Please provide context for your familiarity with the Obsidian API.
+
+If you used AI, please state the level of AI assist you used. For example, "I used it for full code generation.", "I used it for the explanatory comments but wrote code by hand.", "I used it to iterate on the architecture and tweaked the resulting code.". We won't reject AI code outright, but this context is extremely helpful for directing review and catching some classes of bugs.
+
 Add a review request from `@sneakyfoxes/engineers`.
 
 ## Maintainer Response
