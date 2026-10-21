@@ -58,7 +58,9 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 	obsidianChars(): void {
 		const { containerEl } = this;
 
-		new Setting(containerEl).setName('Obsidian troublesome characters').setHeading();
+		new Setting(containerEl)
+			.setName('Obsidian troublesome characters')
+			.setHeading();
 		containerEl.createEl('p', {
 			text: "Obsidian itself won't let you use these in filenames and will remove them automatically. However, if you create files via external means they can creep in. These characters wreak havoc with [[links]] syntax.",
 		});
@@ -132,7 +134,9 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 	androidChars(): void {
 		const { containerEl } = this;
 
-		new Setting(containerEl).setName('Android invalid characters').setHeading();
+		new Setting(containerEl)
+			.setName('Android invalid characters')
+			.setHeading();
 		this.containerEl.createEl('p', {
 			text: 'Obsidian for Android will not allow you to create filenames with these characters, but external programs and other Obsidian platforms will. If you sync your vault between Android and non-Android systems using git or other means, these may cause you issues.',
 		});
@@ -193,7 +197,9 @@ export default class SafeFilenameLinterSettingTab extends PluginSettingTab {
 	otherChars(): void {
 		const { containerEl } = this;
 
-		new Setting(containerEl).setName('Other troublesome characters').setHeading();
+		new Setting(containerEl)
+			.setName('Other troublesome characters')
+			.setHeading();
 		this.containerEl.createEl('p', {
 			text: 'If you sync your vault with external systems, such as OneDrive, you might run into issues with these characters.',
 		});
