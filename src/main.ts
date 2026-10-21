@@ -18,7 +18,7 @@ interface SafeFilenameLinterSettings {
 
 // Notice duration is in milliseconds.
 // See https://docs.obsidian.md/Reference/TypeScript+API/Notice/(constructor)
-const NOTICE_DURATION = 30000;
+const NOTICE_DURATION = 30 * 1000;
 
 const DEFAULT_SETTINGS: SafeFilenameLinterSettings = {
 	autoLint: false,
