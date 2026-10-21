@@ -248,8 +248,10 @@ export default class SafeFilenameLinter extends Plugin {
 				`${path}/${newFilename}.${file.extension}`,
 			);
 
-			// If a file already exists with this path, filemanager.renameFile() will throw an error. There might be other reasons it throws errors, but not as far as we can tell from the documentation.
-			// See https://docs.obsidian.md/Reference/TypeScript+API/FileManager/renameFile
+			// If a file already exists with this path, filemanager.renameFile() will
+			// throw an error. There might be other reasons it throws errors, but not
+			// as far as we can tell from the documentation.
+			// See: https://docs.obsidian.md/Reference/TypeScript+API/FileManager/renameFile
 			try {
 				await this.app.fileManager.renameFile(file, newFilepath);
 
